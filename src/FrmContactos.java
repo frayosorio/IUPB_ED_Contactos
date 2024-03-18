@@ -1,6 +1,7 @@
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -75,6 +76,11 @@ public class FrmContactos extends JFrame {
 
         getContentPane().add(tbContactos, BorderLayout.NORTH);
         getContentPane().add(spContactos, BorderLayout.CENTER);
+
+        String nombreArchivo = System.getProperty("user.dir")
+                + "/src/datos/Datos.txt";
+        contactos.desdeArchivo(nombreArchivo);
+        contactos.mostrar(tblContactos);
     }
 
     private Lista contactos = new Lista();
@@ -89,6 +95,13 @@ public class FrmContactos extends JFrame {
     }
 
     private void btnGuardarClick(ActionEvent evt) {
+        String nombreArchivo = System.getProperty("user.dir")
+                + "/src/datos/Datos.txt";
+        if (contactos.guardar(nombreArchivo)) {
+            JOptionPane.showMessageDialog(null, "Datos guardados exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudieron guardar los cambios");
+        }
     }
 
     private void btnOrdenarClick(ActionEvent evt) {
