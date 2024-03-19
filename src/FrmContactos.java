@@ -92,6 +92,10 @@ public class FrmContactos extends JFrame {
     }
 
     private void btnEliminarClick(ActionEvent evt) {
+        if(tblContactos.getSelectedRow()>=0){
+            contactos.eliminar(contactos.getNodo(tblContactos.getSelectedRow()));
+        }
+        contactos.mostrar(tblContactos);
     }
 
     private void btnGuardarClick(ActionEvent evt) {

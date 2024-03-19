@@ -139,6 +139,32 @@ public class Lista {
         }
     }
 
+ //Elimina un nodo de la lista
+ public void eliminar(Nodo n) {
+    if (n != null && cabeza != null) {
+        //Buscar el nodo
+        boolean encontrado = false;
+        Nodo apuntador = cabeza;
+        Nodo anterior = null;
+        while (apuntador != null && !encontrado) {
+            if (apuntador == n) {
+                encontrado = true;
+            } else {
+                anterior = apuntador;
+                apuntador = apuntador.siguiente;
+            }
+        }
+        if (encontrado) {
+            if (anterior == null) {
+                cabeza = apuntador.siguiente;
+            } else {
+                anterior.siguiente = apuntador.siguiente;
+            }
+        }
+    }
+}
+
+
     // ****** atributos estaticos *****/
 
     public static String[] encabezados = new String[] { "Nombre", "Telefono", "Celular", "Direccion", "Correo" };
